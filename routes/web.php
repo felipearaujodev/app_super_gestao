@@ -13,8 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PrincipalController@principal');
+Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
-Route::get('/sobre-nos', 'SobreNosController@sobreNos');
+Route::prefix('/app')->group(function(){
+    Route::get('/clientes', function(){ return 'Clientes'; })->name('app.clientes');
+    Route::get('/produtos', function(){ return 'Produtos'; })->name('app.produtos');
+    Route::get('/fornecedores', function(){ return 'Fornecedores'; })->name('app.fornecedores');
+});
 
-Route::get('/contato', 'ContatoController@contato');
+Route::fallback(function(){
+    return 'Não foi possível encontrar a rota, <a href="'.route("site.index").'">clique aqui</a> para voltar ao início!';
+});
+
