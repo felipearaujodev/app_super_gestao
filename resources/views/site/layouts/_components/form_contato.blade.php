@@ -4,6 +4,7 @@
     @csrf
     <input name="nome" type="text" placeholder="Nome" class="{{ $classe_borda }}">
     <br>
+    <input name="ddd" type="text" placeholder="DDD" class="{{ $classe_borda }}">
     <input name="telefone" type="text" placeholder="Telefone" class="{{ $classe_borda }}">
     <br>
     <input name="email" type="text" placeholder="E-mail" class="{{ $classe_borda }}">
