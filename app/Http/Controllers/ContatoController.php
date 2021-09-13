@@ -13,7 +13,13 @@ class ContatoController extends Controller
             "titulo"=>"Contato"
         ];
 
-        return view('site.contato', compact('paramsPage'));
+        $motivo_contatos = [
+            '1' => 'Dúvida',
+            '2' => 'Elogio',
+            '3' => 'Reclamação' 
+        ];
+
+        return view('site.contato', compact('paramsPage', 'motivo_contatos'));
     }
 
     public function salvar(Request $request){
@@ -28,12 +34,12 @@ class ContatoController extends Controller
         $contato->save();*/
 
         $request->validate([
-            "nome"=>"required",
+            "nome"=>"required|min:3|max:100",
             "ddd"=>"required",
             "telefone"=>"required",
             "email"=>"required",
             "motivo_contato"=>"required",
-            "mensagem"=>"required"
+            "mensagem"=>"required|min:10|max:2000"
         ]);
 
         //dd($request);
