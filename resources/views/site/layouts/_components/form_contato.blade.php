@@ -20,3 +20,7 @@
     <br>
     <button type="submit" class="{{ $classe_borda }}">ENVIAR</button>
 </form>
+
+<div>
+    {{ print_r($errors) }}
+</div>
