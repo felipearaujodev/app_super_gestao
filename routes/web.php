@@ -18,6 +18,7 @@ Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
 Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
+Route::get('/sucesso', 'SucessoMensagemController@sucesso')->name('site.sucesso');
 
 Route::prefix('/app')->group(function(){
     Route::get('/clientes', function(){ return 'Clientes'; })->name('app.clientes');
@@ -26,6 +27,8 @@ Route::prefix('/app')->group(function(){
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@show')->name('teste');
+
+
 
 Route::fallback(function(){
     return 'Não foi possível encontrar a rota, <a href="'.route("site.index").'">clique aqui</a> para voltar ao início!';

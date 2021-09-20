@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MotivoContato;
 
 class PrincipalController extends Controller
 {
@@ -12,6 +13,9 @@ class PrincipalController extends Controller
             "titulo"=>"Principal"
         ];
 
-        return view('site.principal', compact('paramsPage'));
+        $motivo_contatos = MotivoContato::all();
+        
+
+        return view('site.principal', compact('paramsPage', 'motivo_contatos'));
     }
 }

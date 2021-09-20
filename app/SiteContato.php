@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SiteContato extends Model
 {
     protected $table = 'site_contatos';
-    protected $fillable = ['nome','ddd', 'telefone', 'email', 'motivo_contato', 'mensagem'];
+    protected $fillable = ['nome','ddd', 'telefone', 'email', 'motivo_contatos_id', 'mensagem'];
 
     //inserindo registros com tinker
     /*
