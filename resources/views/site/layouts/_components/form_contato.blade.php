@@ -36,9 +36,3 @@
     <button type="submit" class="{{ $classe_borda }}">ENVIAR</button>
 </form>
 
-@if($errors->any())
-        @foreach($errors->all() as $erro)
-            <p>{{$erro}}</p>
-        @endforeach
-    </div>
-@endif

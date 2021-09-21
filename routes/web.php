@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\LogAcessoMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PrincipalController@principal')->name('site.index');
-Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
-Route::get('/contato', 'ContatoController@contato')->name('site.contato');
-Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
+Route::middleware(LogAcessoMiddleware::class) 
+    ->get('/', 'PrincipalController@principal')
+    ->name('site.index');
+
+Route::get('/sobre-nos', 'SobreNosController@sobreNos')
+    ->name('site.sobrenos');
+
+Route::middleware(LogAcessoMiddleware::class)
+    ->get('/contato', 'ContatoController@contato')
+    ->name('site.contato');
+
+Route::middleware(LogAcessoMiddleware::class)
+    ->post('/contato', 'ContatoController@salvar')
+    ->name('site.contato');
+
 Route::get('/login', function(){ return 'Login'; })->name('site.login');
-Route::get('/sucesso', 'SucessoMensagemController@sucesso')->name('site.sucesso');
+Route::middleware(LogAcessoMiddleware::class)
+    ->get('/sucesso', 'SucessoMensagemController@sucesso')
+    ->name('site.sucesso');
 
 Route::prefix('/app')->group(function(){
     Route::get('/clientes', function(){ return 'Clientes'; })->name('app.clientes');
