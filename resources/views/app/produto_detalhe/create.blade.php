@@ -1,6 +1,6 @@
 @extends('app.layouts.basico')
 
-@section('titulo', 'Produtos')
+@section('titulo', 'Detalhes do Produto')
 
 @section('conteudo')
 
@@ -9,14 +9,13 @@
         @if(isset($produto->id))
             <p>Editar Produto</p>
         @else
-            <p>Adicionar Produto</p>
+            <p>Adicionar detalhes do Produto</p>
         @endif
     </div>
 
     <div class="menu">
         <ul>
-            <li><a href="{{ route('produto.index') }}">Voltar</a></li>
-            <li><a href="#">Consulta</a></li>
+            <li><a href="#">Voltar</a></li>
         </ul>
     </div>
 
@@ -24,7 +23,7 @@
         
         <div style="width:30%;margin-left:auto;margin-right:auto;">
 
-            @component('app.produto._components.form_create_edit', ["unidades"=>$unidades])
+            @component('app.produto_detalhe._components.form_create_edit', ["unidades"=>$unidades])
                 
             @endcomponent
         </div>
