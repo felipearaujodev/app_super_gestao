@@ -1,25 +1,29 @@
 @extends('app.layouts.basico')
 
-@section('titulo', 'Produtos')
+@section('titulo', 'Detallhes do Produtos')
 
 @section('conteudo')
 
 <div class="conteudo-pagina">
     <div class="titulo-pagina-2">
-        <p>Edição de Produto</p>
+        <p>Editar Detalhes de Produto</p>
     </div>
 
     <div class="menu">
         <ul>
-            <li><a href="{{ route('produto.index') }}">Voltar</a></li>
-            <li><a href="#">Consulta</a></li>
+            <li><a href="#">Voltar</a></li>
         </ul>
     </div>
 
     <div class="informação-pagina">
+
+        <h4>Produto</h4>
+        <div>Nome: {{$produto_detalhe->item->nome}}</div>
+        <br>
+        <div>Descrição: {{$produto_detalhe->item->descricao}}</div>
         
         <div style="width:30%;margin-left:auto;margin-right:auto;">
-            @component('app.produto._components.form_create_edit', ["produto"=>$produto, "unidades"=>$unidades])
+            @component('app.produto_detalhe._components.form_create_edit', ["produto_detalhe"=>$produto_detalhe, "unidades"=>$unidades])
                 
             @endcomponent
         </div>
