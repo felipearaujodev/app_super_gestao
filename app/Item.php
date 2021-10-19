@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\ItemDetalhe;
+
 
 class Item extends Model
 {
@@ -13,5 +13,10 @@ class Item extends Model
     //Item tem 1 ItemDetalhe (hasOne)
     public function itemDetalhe(){
         return $this->hasOne('App\ItemDetalhe', 'produto_id', 'id');
+    }
+
+    //Item pertence a um fornecedor
+    public function fornecedor() {
+        return $this->belongsTo('App\Fornecedor');
     }
 }

@@ -64,7 +64,10 @@ class ProdutoDetalheController extends Controller
     {
         $unidades = Unidade::all();
 
-        return view('app.produto_detalhe.edit',["produto_detalhe"=>$produtoDetalhe, "unidades"=>$unidades]);
+        //EagerLoading, carregamento ancioso, acesso imediato as propriedades de item
+        $produtoDetalheEagerLoading = $produtoDetalhe::with(['Item'])->find($produtoDetalhe->id);
+
+        return view('app.produto_detalhe.edit',["produto_detalhe"=>$produtoDetalheEagerLoading, "unidades"=>$unidades]);
     }
 
     /**
