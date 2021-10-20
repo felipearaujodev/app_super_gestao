@@ -37,9 +37,7 @@
                 </thead>
                 <tbody>
                     
-                    @foreach($produtos as $produto)
-                    <pre>
-                    {{dd($produto)}}
+                    @foreach($produtos as $produto)                   
                         <tr>
                             <th>{{$produto->nome}}</th>
                             <th>{{$produto->descricao}}</th>

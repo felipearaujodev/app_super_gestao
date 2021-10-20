@@ -15,7 +15,7 @@ class AlterProdutosRelacionamentoFornecedores extends Migration
     {
         Schema::table('produtos', function (Blueprint $table) {
 
-            $fornecedorId = DB::table('fornecedores')->insert([
+            $fornecedorId = DB::table('fornecedores')->insertGetId([
                 'nome'=>'Fornecedor Padrão',
                 'site'=>'sitepadrao.com',
                 'uf'=>'SP',
