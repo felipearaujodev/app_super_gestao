@@ -13,7 +13,8 @@ class FornecedorController extends Controller
 
     public function listar (Request $request) {
 
-        $fornecedores = Fornecedor::where('nome', 'like', '%'.$request->input('nome').'%')
+        //with faz o carregamento ancioso do relacionamento, a view já recebe os dados de produtos relacionados
+        $fornecedores = Fornecedor::with('produtos')->where('nome', 'like', '%'.$request->input('nome').'%')
             ->where('site', 'like', '%'.$request->input('site').'%')
             ->where('uf', 'like', '%'.$request->input('uf').'%')
             ->where('email', 'like', '%'.$request->input('email').'%')
