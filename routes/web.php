@@ -79,6 +79,9 @@ Route::middleware('autenticacao')->prefix('/app')->group(function(){
 
     Route::post('pedido-produto/store/{pedido}', 'PedidoProdutoController@store')
         ->name('pedido-produto.store');
+    
+    Route::delete('pedido-produto/detroy/{pedidoProduto}', 'PedidoProdutoController@destroy')
+        ->name('pedido-produto.destroy');
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@show')->name('teste');
